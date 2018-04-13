@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Digit Recognition App</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Bootstrap style template -->
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='starter-template.css') }}>
+
+</head>
+<body>
+  <!-- NAVAGATION BAR -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand navbar-link " href="/">Digit Recognition</a>
+  </nav>
+  <!-- CONTENT -->
+    <div class="container-fluid">
+      <div class="starter-template">
+          
+          <div>
+              <h1>Draw a digit</h1>
+          </div>
+        <div>    
+          <canvas id="canvas" height="280" width="280" style="border:4px solid" ></canvas>
+        </div>
+      
+        <div>
+          <input type="button" class="myButton" value="Predict" style="">
+          <input type="button" id="clearButton" value="Clear" style="">
+        </div>
+
+        <div>
+          <h1 id="result"></h1>
+        </div>
+      </div>
+       
+          
+
+            
+            <!--
+              <h1>Upload Digit Image</h1>
+              <form action="/upload" method="POST" enctype="multipart/form-data">
+                <label class="custom-file">
+                  <input type="file" name="file" class="custom-file-input">
+                  <span class="custom-file-control"></span>
+                </label>
+                <div>
+                  <button class="btn btn-primary" type="submit">Upload file</button>
+                </div>
+              </form>
+            -->
+  
+      
+        
+    </div>
+    <!--
+    <img class="rounded">
+    -->
+      
+
+    <!-- Optional JavaScript -->
+
+    <!-- Adapted from: https://github.com/llSourcell/how_to_deploy_a_keras_model_to_production/blob/master/templates/index.html -->
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="{{url_for('static',filename='index.js')}}"></script>
+    <script type="text/javascript">   
+       $(".myButton").click(function(){
+         $('#result').text('  Predicting...');
+         var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+         var canvasObj = document.getElementById("canvas");
+         var img = canvasObj.toDataURL('./static/uploads/image/png');
+         $.ajax({
+           type: "POST",
+           url: $SCRIPT_ROOT + "/predict",
+           data: img,
+           success: function(data){
+             $('#result').text('Predicted Output: ' + data);
+           }
+         });
+       });
+   </script>
+  
+  </body>
+</html>

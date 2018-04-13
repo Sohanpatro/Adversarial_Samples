@@ -1,0 +1,35 @@
+body {
+    padding-top: 5rem;
+  }
+  .starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+.left {
+  text-align: left;
+}
+
+.right {
+  float: right;
+  text-align: right;
+}
+  .navbar-center {
+      
+      width: 100%;
+      text-align: center;
+  }
+
+  #canvas {
+    position: relative;
+    border: 8px solid;
+    margin: auto;
+    margin-top: 160px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .centered {
+    position: relative;
+    text-align: center;
+  }
