@@ -7,4 +7,4 @@ Because GitHub has a max file size limit of 100MB, some files have to be downloa
 
 After you clone this repository: `git clone https://github.com/Sohanpatro/Adversarial_Samples`
 
-, just dump all these files in the repo. They've been added in .gitignore, so adding them to the repo will not be pushed anytime. 
+Just dump all these files in the repo. They've been added in .gitignore, so adding them to the repo will not be pushed anytime. 
